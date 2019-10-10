@@ -1,4 +1,8 @@
-org\tiago\restApi\messenger\model\Message.class
+org\tiago\restApi\messenger\resources\ProfileResource.class
 org\tiago\restApi\messenger\service\MessageService.class
+org\tiago\restApi\messenger\database\DatabaseClass.class
+org\tiago\restApi\messenger\service\ProfileService.class
+org\tiago\restApi\messenger\resources\MessageResource.class
+org\tiago\restApi\messenger\model\Message.class
 org\tiago\restApi\messenger\MyResource.class
-org\tiago\restApi\messenger\resources\MessageResources.class
+org\tiago\restApi\messenger\model\Profile.class

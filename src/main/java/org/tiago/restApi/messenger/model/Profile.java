@@ -40,7 +40,7 @@ public class Profile {
 	}
 
 
-	public String getProfilename() {
+	public String getProfileName() {
 		return profilename;
 	}
 
