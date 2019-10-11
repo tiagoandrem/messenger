@@ -1,5 +1,7 @@
 package org.tiago.restApi.messenger.resources;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.ws.rs.BeanParam;
@@ -12,7 +14,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 import org.tiago.restApi.messenger.model.Message;
 import org.tiago.restApi.messenger.resources.beans.MessageFilterBeans;
@@ -38,11 +43,23 @@ public class MessageResource {
 		return messageService.getAllMessages();
 	}
 	
+	//método para colocar o url da api no heather
+	
 	@POST
-	public Message addMessages(Message message) {
+	public Response addMessages(Message message, @Context UriInfo uriInfo ){
 		
-		return messageService.addMessage(message);
+		Message newMessage = messageService.addMessage(message);
+		String newId = String.valueOf(newMessage.getId());
+		URI uri = uriInfo.getAbsolutePathBuilder().path(newId).build();
+		return Response.created(uri).
+									entity(newMessage).
+									build();
+											
+		
+		//return messageService.addMessage(message);
 	}
+	
+	
 	
 	@PUT
 	public Message updateMessage(@PathParam("messageId") long messageID, Message message) {
