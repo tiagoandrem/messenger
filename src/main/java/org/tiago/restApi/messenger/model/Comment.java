@@ -18,7 +18,6 @@ public class Comment {
 
 	
 	public Comment(long id, String message, String author) {
-		super();
 		this.id = id;
 		this.message = message;
 		this.created = new Date();
