@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.DataFormatException;
 
 import org.tiago.restApi.messenger.database.DatabaseClass;
+import org.tiago.restApi.messenger.exceptions.DataNotFoundException;
 import org.tiago.restApi.messenger.model.Message;
 
 public class MessageService {
@@ -43,7 +45,13 @@ public class MessageService {
 	
 	
 	public Message  getMessage(long id){
-		return messages.get(id);
+		
+		Message message = messages.get(id);
+		
+		if(message == null) {
+			throw new DataNotFoundException("Message with id " + id + " not found!");
+		}
+		return message;
 		
 	}
 	
