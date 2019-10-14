@@ -79,6 +79,7 @@ public class Message {
 		Link link = new Link();
 		link.setLink(url);
 		link.setRel(rel);
+		links.add(link);
 		
 	}
 	
